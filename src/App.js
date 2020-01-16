@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import Dashboard from './components/Dashboard'
 import MainContainer from './containers/MainContainer'
+import ProjectsContainer from './containers/ProjectsContainer'
+import DevShow from './components/DevShow'
+import ProjectShow from './components/ProjectShow'
 import Login from './components/Login'
+import {Col} from 'react-bootstrap'
 // import SignUp from './components/SignUp'
 // import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,7 +23,8 @@ export class App extends Component {
     token:null,
     loggedInUserId:null,
     user:null,
-    page:null
+    page:null,
+    show:null
   }
 
   componentDidMount = () => {
@@ -33,18 +38,18 @@ export class App extends Component {
         
         
       })
-      // console.log(this.state,localStorage)
+      console.log(this.state,localStorage)
     }
     )
 
-    // fetch('http://localhost:3000/projects')
-    // .then(r => r.json())
-    // .then((projects) => {
-    //   this.setState({
-    //     projects:projects
-    //   })
-    // }
-    // )
+    fetch('http://localhost:3000/projects')
+    .then(r => r.json())
+    .then((projects) => {
+      this.setState({
+        projects:projects
+      })
+    }
+    )
 
     
   }
@@ -84,10 +89,19 @@ export class App extends Component {
     projects={this.state.projects}
     user={ this.state.user }
     token={ this.state.token }
-    
+    setPage={this.setPage}
     />
 
   }
+
+  projectsWithProps = () => {
+    console.log(this.state.projects)
+    return < ProjectsContainer
+    projects={ this.state.projects }
+    setPage={this.setPage}
+    />
+  }
+  
   
 
   dashWithprops = () => {
@@ -99,22 +113,53 @@ export class App extends Component {
 
   }
   
-  // setPage = () => {
-    
-  // }
+  setPage = (user) => {
+    console.log("hey from set user",user)
+    let pageNum = user.id
+    this.setState({
+      page:pageNum,
+      show:user
+    })
+  }
   
+  devShowWprops = () => {
+    return < DevShow 
+    user={this.state.show}
+    developer={this.state.show}
+
+    />
+  }
+  
+  projShowWprops = () => {
+    return < ProjectShow 
+    project={this.state.show}
+    
+
+    />
+  }
   
 
   render() {
     return (
       <div className="App">
         < Layout>
+        < div className="nav">
+        < NavLink to="/main">
+        <Link to= "/home">Home </Link>
+        
+        <Link to= "/developers">developers </Link>
+        <Link to= "/projects">projects </Link>
+        <Link to= "/">Signup or Login</Link>
+</NavLink>
+        </div>
         < Switch>
         < Route exact path="/" component={ this.loginWithProps }/>
         < Route path="/home" component={ this.dashWithprops }/>
         < Route path="/main" component={ this.mainWithProps }/>
-        < Route path="/developers" component={ this.mainWithProps }/>
-        {/* < Route path={`/developers/${this.state.page}`} component={ this.mainWithProps }/> */}
+        < Route exact path="/developers" component={ this.mainWithProps }/>
+        < Route exact path={`/developers/${this.state.page}`} component={ this.devShowWprops }/>
+        < Route exact path="/projects" component={ this.projectsWithProps }/>
+        < Route exact path={`/projects/${this.state.page}`} component={ this.projShowWprops }/>
         </Switch>
         </Layout>
       </div>

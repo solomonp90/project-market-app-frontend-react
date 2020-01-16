@@ -21,60 +21,6 @@ render() {
             
             <div className="row">
 
-                {/* < devsContainer developers={this.props.developers}/>
-                
-                < projectsContainer projects={this.props.projects}/> */}
-                {/* <NavLink to= "/projects">projects</NavLink> */}
-                {/* <NavLink to= "/developers">developers</NavLink> */}
-
-                {/* < Dashboard developers={this.props.developers}/> */}
-                {/* < Dashboard developers={this.props.developers}/> */}
-
-                {/* < Dashboard 
-                clients={ this.props.clients }
-                developers={ this.props.developers }
-                projects={ this.props.projects }
-                user={ this.props.user }
-                /> */}
-
-                {/* {
-                    this.props.developers.map((dev) => < Dashboard developer={dev} user={ this.props.user }/>)
-                } */}
-
-                {/* {
-                    this.props.clients.map((client) => < Dashboard client={client} user={ this.props.user }/>)
-                }
-
-                {
-                    this.props.projects.map((project) => < Dashboard project={project}/>)
-                } */}
-                
-                
-
-
-
-
-                {/* {
-                    this.props.developers.map((developer)=> 
-                    <Card  style={{ width: '18rem' }} onClick={(evt)=> console.log(developer,developer.id)}>
-                        <Card.Img src={developer.image}/>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>
-                                
-                                < DevShow 
-                                developer={developer} 
-                                
-                                key={developer.id} 
-                                
-                                />
-                            </ListGroup.Item>
-                       </ListGroup>
-                    </Card>
-
-                        )      
-                } */}
-
-
 
    < Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={image} />

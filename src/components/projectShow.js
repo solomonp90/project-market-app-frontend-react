@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 
-export class projectShow extends Component {
+export class ProjectShow extends Component {
     render() {
+        const { title, image, description, stipulation} = this.props.project
         return (
             <div>
-                
+               
+                <img alt={"project-img"} src={ image }/>
+                <br/>
+                <h4>{title}</h4>
+        <p>{ description }</p>
+        <br/>
+        <p>{ stipulation }</p>
+
             </div>
         )
     }
 }
 
-export default projectShow
+export default ProjectShow
