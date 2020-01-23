@@ -16,3 +16,39 @@ prof {
    width: '18rem';
    height: '40rem'
 }
+
+.background{
+  background:url('https://webprintmore.com/wp-content/uploads/2017/08/4214905-background-images-for-websites.jpg')
+}
+
+/* .cardimg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #548245;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+} */
+
+
+
+element.style {
+  top: 10px;
+  right: 30px;
+  margin-top: -;
+  width: 126px;
+  height: 422px;
+  margin-left: 30px;
+  margin-right: -30;
+  margin-right: 100px;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  border: solid #343a40;
+}

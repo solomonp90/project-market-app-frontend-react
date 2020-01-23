@@ -18,21 +18,14 @@ render() {
                 {
                     this.props.developers.map((developer)=>
                     < Link to={`/developers/${developer.id}`} onClick={()=>this.props.setPage(developer)} key={ developer.id }>
-                    <Card  style={{ width: '18rem' }}  >
-                        <Card.Img src={developer.image}/>
-                        <Card.Title>
-                            {`${developer.first_name} ${developer.last_name}`}
-                        </Card.Title>
-                          { <h6>{developer.experience} experience with {developer.skill}</h6>}
-                        <ListGroup variant="flush">
-                            <ListGroup.Item >
-                                
-                               
-
-                                
-                            </ListGroup.Item>
-                       </ListGroup>
-                    </Card>
+                    
+                    <div class="card">
+                        <img src={ developer.image } alt="Avatar" style={{width:"100%"}}/>
+                        <div class="container">
+                            <h4><b>{ `${developer.first_name} ${ developer.last_name }` }</b></h4>
+                        </div>
+                    </div>
+                    
                     </Link> 
 
                         )                      

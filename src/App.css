@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+.backgroundimg{
+  background:url('https://webprintmore.com/wp-content/uploads/2017/08/4214905-background-images-for-websites.jpg')
+}
+
+.cardimg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #4570be;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.profile{
+  border-top-width: 20px;
+  border-top-color: #10bd75;
+}
+
+.card-img {
+  padding: 1.5rem;
+
+}
+
+
+.profile-img {
+  border: solid #343a40;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+
+.dev-list-img {
+  width: 50px;
+  height: 100px;
+}
+
+
+.thumb-nail-img {
+  width: 150px;
+  height: 150px;
+  margin-top: -50px;
+}
+
+.card-title-dev {
+  text-align: left;
+  color: #343a40;
+}
