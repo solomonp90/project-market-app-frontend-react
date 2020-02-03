@@ -68,6 +68,16 @@
   border: solid #343a40;
   margin-top: 20px;
   border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-right: 400px;
+  background-color: #343a40;
+}
+
+.prof-name {
+  margin-right: 400px;
+  margin-top: 20px;
+  color: #343a40;
 }
 
 
@@ -81,6 +91,10 @@
   width: 150px;
   height: 150px;
   margin-top: -50px;
+}
+
+.background{
+  background:url('https://webprintmore.com/wp-content/uploads/2017/08/4214905-background-images-for-websites.jpg')
 }
 
 .card-title-dev {

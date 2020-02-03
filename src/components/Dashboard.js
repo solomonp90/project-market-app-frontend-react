@@ -112,7 +112,7 @@ export class Dashboard extends Component {
          .then((user) => {
              this.props.accountDelete()
              this.props.setLogout()
-             this.props.accountDelete()
+            //  this.props.accountDelete()
 
          }
          )
@@ -145,15 +145,15 @@ export class Dashboard extends Component {
         return (
             user1.kind === "Developer" ? 
             <div > 
-                <Container>
+                <Container fluid>
                 <div className="row">
                 <div className="col">
                 <img   alt={"avatar"} src={ image } className="profile-img"/>
-                <h4>{`${first_name} ${last_name}`}</h4>
-                <h6>{ username }</h6>
-                <h6>{ kind }</h6>
-                <button onClick={this.setEditForm}>edit profile</button>  
-                <div style={{display: this.state.editForm ? "block":"none"}}>
+                <h4 className="prof-name">{`${first_name} ${last_name}`}</h4>
+                <h6 className="prof-name">{ username }</h6>
+                <h6 className="prof-name">{ kind }</h6>
+                <button className="prof-name" onClick={this.setEditForm}>edit profile</button>  
+                <div className="prof-name" style={{display: this.state.editForm ? "block":"none"}}>
                 <form onSubmit={ this.editFormSubmitted }>
                     <label htmlFor={"first_name"}>First Name</label>
                     <br/>
@@ -222,7 +222,7 @@ export class Dashboard extends Component {
                 </div>
                     <div className="col card-img">
         <label>{ user1.kind === "Developer" ? `${projects[0].kind}s` :  `${developers[0].kind}s`}</label>
-                    { projects.map((project) => {
+                    { projects.slice(0,5).map((project) => {
                         return <Link to={`/projects/${project.id}`} onClick={()=> this.props.setPage(project)}>
                             < Card >
                         <Card.Title>
@@ -240,15 +240,15 @@ export class Dashboard extends Component {
             </div>
             :
             <div > 
-                <Container>
+                <Container fluid >
                 <div className="row">
                 <div className="col">
                 <img alt={"avatar"} src={ image } className="profile-img"/>
-                <h4>{`${first_name} ${last_name}`}</h4>
-                <h6>{ username }</h6>
-                <h6>{ kind }</h6>
-                <button onClick={ () => this.setState({ formDisplay: !this.state.formDisplay }) }>post project</button>
-                <div style={{display: this.state.formDisplay ? "block" : "none"}}>
+                <h4 className="prof-name">{`${first_name} ${last_name}`}</h4>
+                <h6 className="prof-name">{ username }</h6>
+                <h6 className="prof-name">{ kind }</h6>
+                <button className="prof-name" onClick={ () => this.setState({ formDisplay: !this.state.formDisplay }) }>post project</button>
+                <div className="prof-name" style={{display: this.state.formDisplay ? "block" : "none"}}>
                 <br/>
                     <form onSubmit={ this.projectSubmitted }>
                     <label htmlFor={"title"}>Title</label>
@@ -296,7 +296,7 @@ export class Dashboard extends Component {
                 </div>
                     <div className="col">
         <label>{ user1.kind === "Client" ?  `${developers[0].kind}s` : `${projects[0].kind}s`}</label>
-                    { developers.map((developer) => {
+                    { developers.slice(0,5).map((developer) => {
                         return <Link to={`/developers/${developer.id}`} onClick={()=> this.props.setPage(developer)} key={ developer.id }>
                             < Card >
                         <Card.Title className="card-title-dev">

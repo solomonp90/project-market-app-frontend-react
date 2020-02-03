@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import { Route, Switch, NavLink,Link ,Redirect} from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap'
+import { Nav, Navbar, Form, FormControl, Button, Container} from 'react-bootstrap'
 import Dashboard from './components/Dashboard'
 import MainContainer from './containers/MainContainer'
 import ProjectsContainer from './containers/ProjectsContainer'
@@ -213,9 +213,9 @@ export class App extends Component {
   render() {
     return (
       
-      <div className="App" >
+      <div className="App background" >
 
-        < Layout>
+        
         <Navbar bg="dark" variant="dark" >
     <Navbar.Brand href="/home">webmart</Navbar.Brand>
     <Nav className="mr-auto">
@@ -236,7 +236,7 @@ export class App extends Component {
 </Route>
 
 <Route path="/home">
-  {this.state.accountDeleted ? < Login  setToken={this.setToken} 
+  {this.state.accountDeleted || !localStorage.user ? < Login  setToken={this.setToken} 
     user={this.state.user}
     loggedInUserId={this.state.loggedInUserId}
     token={this.state.token}/> : this.dashWithprops }
@@ -245,12 +245,12 @@ export class App extends Component {
         < Route exact path="/" component={ this.loginWithProps }/>
         {/* < Route path="/home" component={ this.dashWithprops }/> */}
         < Route path="/main" component={ this.mainWithProps }/>
-        < Route exact path="/developers" component={ this.mainWithProps }/>
-        < Route exact path={`/developers/${this.state.page}`} component={ this.devShowWprops }/>
-        < Route exact path="/projects" component={ this.projectsWithProps }/>
-        < Route exact path={`/projects/${this.state.page}`} component={ this.projShowWprops }/>
+        < Route exact path="/developers" component={ localStorage.token ? this.mainWithProps : this.loginWithProps }/>
+        < Route exact path={`/developers/${this.state.page}`} component={ localStorage.token ? this.devShowWprops : this.loginWithProps }/>
+        < Route exact path="/projects" component={ localStorage.token ? this.projectsWithProps : this.loginWithProps }/>
+        < Route exact path={`/projects/${this.state.page}`} component={ localStorage.token ? this.projShowWprops : this.loginWithProps }/>
         </Switch>
-        </Layout>
+        
       </div>
       
     )

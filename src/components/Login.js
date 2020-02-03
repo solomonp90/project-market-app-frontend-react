@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+// import  { Row, Container, Col }from 'react-bootstrap';
+
 
 export class Login extends Component {
 
@@ -122,16 +124,19 @@ export class Login extends Component {
       }
 
     
+      // <section >
       render(){
-        return <section >
-          <ul className="errors">
+
+        return (
+          this.state.logIn ? 
+        <div>
+          {/* <ul className="errors">
             {
               this.state.errors.map(error => <li>{ error }</li>)
             }
-          </ul>
-          {
-            this.state.logIn 
-            ? <>
+          </ul> */}
+          
+            
               <h2>Log In</h2>
               <button onClick={ () => this.setState({ logIn: false }) }>I need to register!!!</button>
               <form onSubmit={ this.logInSubmitted }>
@@ -149,90 +154,105 @@ export class Login extends Component {
                         value={ this.state.password } />
                 <input type="submit" />
               </form>
-            </>
-            : <>
+
+              <div>
+              <br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/>
+              </div>
+            </div>
+            : 
+            <div>
               <h2>Sign up</h2>
               <button onClick={ () => this.setState({ logIn: true }) }>I already signed up!!!</button>
           <button style={{display: this.state.isClient ? "none" : "block"}} onClick={ () => this.setState({ kind: "Client",isClient: true }) }>click here if your a client!</button>
           <button style={{display: this.state.isClient ? "block" : "none"}} onClick={ () => this.setState({ kind: "Developer",isClient: false }) }>click here if your a developer!</button>
               <form onSubmit={ this.signUpSubmitted }>
-              <label  htmlFor="sign_up_first_name">first name</label>
+              <label  htmlFor="sign_up_first_name">first name</label><br/>
                 <input  id="sign_up_first_name" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="first_name" 
-                        value={ this.state.first_name } />
+                        value={ this.state.first_name } /><br/>
 
-                <label  htmlFor="sign_up_last_name">last name</label>
+                <label  htmlFor="sign_up_last_name">last name</label><br/>
                 <input  id="sign_up_last_name" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="last_name" 
-                        value={ this.state.last_name } />
+                        value={ this.state.last_name } /><br/>
 
-                <label  htmlFor="sign_up_username">Username</label>
+                <label  htmlFor="sign_up_username">Username</label><br/>
                 <input  id="sign_up_username" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="username" 
-                        value={ this.state.username } />
+                        value={ this.state.username } /><br/>
 
-                <label  htmlFor="sign_up_password">Password</label>
+                <label  htmlFor="sign_up_password">Password</label><br/>
                 <input  id="sign_up_password" 
                         type="password" 
                         onChange={ this.onChange } 
                         name="password" 
-                        value={ this.state.password } />
+                        value={ this.state.password } /><br/>
 
-                <label  htmlFor="sign_up_image">image url</label>
+                <label  htmlFor="sign_up_image">image url</label><br/>
                 <input  id="sign_up_image" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="image" 
-                        value={ this.state.image } />
+                        value={ this.state.image } /><br/>
 
-                <label  htmlFor="sign_up_kind">kind</label>
+                <label  htmlFor="sign_up_kind">kind</label><br/>
                 <input  id="sign_up_kind" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="kind" 
-                        value={ this.state.kind } />
+                        value={ this.state.kind } /><br/>
                               <br/>
                         <div style={{display: !this.state.isClient ? 'none' : 'block'} }>    
-                <label  htmlFor="sign_up_domain">domain</label>
+                <label  htmlFor="sign_up_domain">domain</label><br/>
                 <input  id="sign_up_domain" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="domain" 
-                        value={ this.state.domain } />
+                        value={ this.state.domain } /><br/>
                   </div>
 
                 <div style={{display: this.state.isClient ? 'none' : 'block'} } >
 
-                <label  htmlFor="sign_up_skill">skill</label>
+                <label  htmlFor="sign_up_skill">skill</label><br/>
                 <input  id="sign_up_skill" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="skill" 
-                        value={ this.state.skill } />
+                        value={ this.state.skill } /><br/>
                                 <br/>
-                <label  htmlFor="sign_up_experience">experience</label>
+                <label  htmlFor="sign_up_experience">experience</label><br/>
                 <input  id="sign_up_experience" 
                         type="text" 
                         onChange={ this.onChange } 
                         name="experience" 
-                        value={ this.state.experience } />
+                        value={ this.state.experience } /><br/>
 
                         </div>
                 <br/>
                 <input type="submit" />
               </form>
-            </>
-          }
-        </section>
+            </div>
+          
+         
+        )
+        
+        
       }
-    
-}
+      
+    }
+    // </section> 
 
 export default Login
 
