@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-// import  { Row, Container, Col }from 'react-bootstrap';
 
 
 export class Login extends Component {
@@ -55,8 +53,6 @@ export class Login extends Component {
 
       signUpSubmitted = (event) => {
         event.preventDefault()
-        // console.log(event)
-        // this.setState({ isClient: })
         if (this.state.kind === "Client") {
           
          return fetch("http://localhost:3000/clients", {
@@ -118,25 +114,23 @@ export class Login extends Component {
           }
           )
         } else {
-          // console.log("no good",this.state.kind,"you need to change whats in this function set token wont work for signup submitted because set token does something else")
+          // Reminder:console.log("no good",this.state.kind,"you need to change whats in this function set token wont work for signup submitted because set token does something else")
         }
 
       }
 
     
-      // <section >
       render(){
 
         return (
           this.state.logIn ? 
         <div>
-          {/* <ul className="errors">
+          <ul className="errors">
             {
               this.state.errors.map(error => <li>{ error }</li>)
             }
-          </ul> */}
+          </ul>
           
-            
               <h2>Log In</h2>
               <button onClick={ () => this.setState({ logIn: false }) }>I need to register!!!</button>
               <form onSubmit={ this.logInSubmitted }>
@@ -252,7 +246,6 @@ export class Login extends Component {
       }
       
     }
-    // </section> 
 
 export default Login
 

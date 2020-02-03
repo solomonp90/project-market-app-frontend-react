@@ -15,18 +15,6 @@ export class ProjectsContainer extends Component {
                         <Card.Title>
                             { project.title }
                         </Card.Title>
-                          
-                        <ListGroup variant="flush">
-                            <ListGroup.Item >
-                                
-                                {/* < DevShow 
-                                project={project}                               
-                                key={project.id}                                
-                                /> */}
-
-                                
-                            </ListGroup.Item>
-                       </ListGroup>
                     </Card>
                     </Link> 
 

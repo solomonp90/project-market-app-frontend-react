@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import './App.css';
-import { Route, Switch, NavLink,Link ,Redirect} from 'react-router-dom'
-import { Layout } from './components/Layout'
-import { Nav, Navbar, Form, FormControl, Button, Container} from 'react-bootstrap'
+import { Route, Switch, Redirect} from 'react-router-dom'
+import { Nav, Navbar } from 'react-bootstrap'
 import Dashboard from './components/Dashboard'
 import MainContainer from './containers/MainContainer'
 import ProjectsContainer from './containers/ProjectsContainer'
 import DevShow from './components/DevShow'
-import ProjectShow from './components/ProjectShow'
+import ProjectShow from './components/projectShow'
 import Login from './components/Login'
-import {Col} from 'react-bootstrap'
-// import SignUp from './components/SignUp'
-// import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class App extends Component {
@@ -39,11 +35,8 @@ export class App extends Component {
       this.setState({
         developers: developers,
         token:localStorage.token,
-        loggedInUserId:localStorage.loggedInUserId,
-        
-        
+        loggedInUserId:localStorage.loggedInUserId
       })
-      // console.log(this.state.user,localStorage)
     }
     )
 
@@ -56,11 +49,10 @@ export class App extends Component {
     }
     )
 
-    
   }
 
   setToken = ( token, loggedInUserId, user) => {
-    // console.log(user)
+  
     if ( token ) {
       
       localStorage.clear()
@@ -78,7 +70,7 @@ export class App extends Component {
         user:user1 
         
       })
-      console.log("this is user1:",this.state.user)
+      
       } else {
       return "sorry must create an account"
     }   
@@ -86,17 +78,13 @@ export class App extends Component {
 
 
   addProject = (project) => {
-    console.log("project:",project)
-
     this.setState({
-      projects:[ project,...this.state.projects ],
-      
+      projects:[ project,...this.state.projects ],   
     })
   }
 
 
   setLogin = () => {
-    // console.log("from set login")
     let logged = this.state.loggedIn
     let loggedOut = this.state.loggedOut
     this.setState({
@@ -121,7 +109,6 @@ export class App extends Component {
   }
 
   loginWithProps = () => {
-    // console.log(this.state.user)
     return < Login 
     setToken={this.setToken} 
     user={this.state.user}
@@ -130,11 +117,9 @@ export class App extends Component {
     loggedOut={ this.state.loggedOut }
     loggedIn={ this.state.loggedIn }
     />
-    
   }
   
   mainWithProps = () => {
-    // console.log(this.state.developers)
     return < MainContainer 
     clients={this.state.clients}
     developers={this.state.developers}
@@ -143,11 +128,9 @@ export class App extends Component {
     token={ this.state.token }
     setPage={this.setPage}
     />
-
   }
 
   projectsWithProps = () => {
-    console.log(this.state.projects,this.state.developers)
     return < ProjectsContainer
     projects={ this.state.projects }
     setPage={this.setPage}
@@ -157,7 +140,6 @@ export class App extends Component {
   
 
   dashWithprops = () => {
-    // console.log(this.state.user)
     return < Dashboard 
     user={ this.state.user }
     token={ this.state.token }
@@ -168,11 +150,9 @@ export class App extends Component {
     accountDelete={ this.accountDelete }
     setLogout={ this.setLogout }
     />
-
   }
   
   setPage = (resource) => {
-    console.log("hey from set page function..resource:",resource.kind )
     let pageNum = resource.id
     this.setState({
       page:pageNum,
@@ -201,8 +181,6 @@ export class App extends Component {
     this.setState({
       accountDeleted:!newState
     })
-    // this.setlogut()
-    console.log("account delete!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
   }
   
   
@@ -212,10 +190,7 @@ export class App extends Component {
 
   render() {
     return (
-      
-      <div className="App background" >
-
-        
+      <div className="App background" >     
         <Navbar bg="dark" variant="dark" >
     <Navbar.Brand href="/home">webmart</Navbar.Brand>
     <Nav className="mr-auto">
@@ -227,7 +202,6 @@ export class App extends Component {
     </Nav>
   </Navbar>
         < Switch>
-
         <Route exact path="/">
   {this.state.loggedIn ? <Redirect to="/home" /> : < Login  setToken={this.setToken} 
     user={this.state.user}
@@ -249,8 +223,7 @@ export class App extends Component {
         < Route exact path={`/developers/${this.state.page}`} component={ localStorage.token ? this.devShowWprops : this.loginWithProps }/>
         < Route exact path="/projects" component={ localStorage.token ? this.projectsWithProps : this.loginWithProps }/>
         < Route exact path={`/projects/${this.state.page}`} component={ localStorage.token ? this.projShowWprops : this.loginWithProps }/>
-        </Switch>
-        
+        </Switch>    
       </div>
       
     )

@@ -1,18 +1,9 @@
 import React, { Component } from 'react'
-import  { Row, Container, Col }from 'react-bootstrap';
+import  { Container }from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import { Route, Switch, NavLink, Link, Redirect} from 'react-router-dom'
-
-// import ListGroup from 'react-bootstrap/ListGroup';
+import { Link } from 'react-router-dom'
 
 export class Dashboard extends Component {
-    
-
-
-   
-      
 
     state = {
         formDisplay:false,
@@ -71,7 +62,7 @@ export class Dashboard extends Component {
             }
         }
         )
-        // create conditional to stop devs from posting projects
+        // Reminder:create conditional to stop devs from posting projects
      }
 
      editFormSubmitted = (event) => {
@@ -112,19 +103,9 @@ export class Dashboard extends Component {
          .then((user) => {
              this.props.accountDelete()
              this.props.setLogout()
-            //  this.props.accountDelete()
-
          }
          )
      }
-    //  ()=><Redirect to="/"/>
-     
-
-    //  let formDis = this.state.formDisplay
-    //  this.setState({
-    //      formDisplay:!formDis
-    //  })
-    //  this.props.addProject(response)
 
     setEditForm = () => {
         let newState = this.state.editForm
@@ -141,7 +122,6 @@ export class Dashboard extends Component {
       const developers = JSON.parse(localStorage.getItem('developers'));
       const projects = JSON.parse(localStorage.getItem('projects'));
       const { first_name, last_name, username, image, kind } = user1
-    //    console.log(this.props,user1)
         return (
             user1.kind === "Developer" ? 
             <div > 
@@ -304,12 +284,6 @@ export class Dashboard extends Component {
                         </Card.Title>
                         < Card.Img src={developer.image} className="dev-list-img " style={{ width: "150px",height:"150"}}/>
                         </Card>
-                        {/* <div className="card">
-                        <img src={ developer.image } alt="Avatar" style={{width:"100%"}} className="dev-list-img"/>
-                        <div class="container">
-                            <h4><b>{ `${developer.first_name} ${ developer.last_name }` }</b></h4>
-                        </div>
-                    </div> */}
                         </Link>
                     }
                     )}

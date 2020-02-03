@@ -46,7 +46,7 @@ export class ProjectShow extends Component {
             this.setState({
                 formDisplay:false
             })
-            // make a function to change state and redirect user to another page
+            // Reminder:make a function to change state and redirect user to another page
         }
         )
     }
@@ -57,8 +57,6 @@ export class ProjectShow extends Component {
         const { title, image, description, stipulation} = this.props.project
         const user = JSON.parse(localStorage.getItem('user'));
         const { kind } = user
-        // const { first_name, last_name, username, kind } = this.props.user
-        // console.log(localStorage)
         return (
             <div>
                
