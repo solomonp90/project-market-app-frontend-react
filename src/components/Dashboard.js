@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import  { Container }from 'react-bootstrap';
+import  { Container, Modal, Button }from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom'
-
+import { ProjectCreate } from '../Modals/ProjectCreate'
 export class Dashboard extends Component {
 
     state = {
@@ -18,7 +18,8 @@ export class Dashboard extends Component {
         description:"",
         stipulation:"",
         kind:"Project",
-        errors:[]
+        errors:[],
+        projectCreated:false
     }
 
     onChange = (event) => {
@@ -31,6 +32,7 @@ export class Dashboard extends Component {
         const user1 = JSON.parse(localStorage.getItem('user'));
         const projects = JSON.parse(localStorage.getItem('projects'));
 
+        if (user1.kind === "Client") {
         console.log(projects)
         event.preventDefault()
         fetch(`http://localhost:3000/projects`, {
@@ -56,14 +58,27 @@ export class Dashboard extends Component {
             } else {
                 let formDis = this.state.formDisplay
                 this.setState({
-                    formDisplay:!formDis
+                    formDisplay:!formDis,
+                    
                 })
                 this.props.addProject(project)
+                this.projectCreated()
             }
         }
         )
-        // Reminder:create conditional to stop devs from posting projects
+        }
      }
+
+     projectCreated = () => {
+        let newState = this.state.projectCreated
+        this.setState({
+            projectCreated:!newState
+        })
+        console.log("from project created")
+    }
+     
+
+
 
      editFormSubmitted = (event) => {
          event.preventDefault()
@@ -114,6 +129,9 @@ export class Dashboard extends Component {
         })
     }
     
+   
+     
+     
     
     
     render() {
@@ -122,6 +140,7 @@ export class Dashboard extends Component {
       const developers = JSON.parse(localStorage.getItem('developers'));
       const projects = JSON.parse(localStorage.getItem('projects'));
       const { first_name, last_name, username, image, kind } = user1
+     
         return (
             user1.kind === "Developer" ? 
             <div > 
@@ -227,7 +246,29 @@ export class Dashboard extends Component {
                 <h4 className="prof-name">{`${first_name} ${last_name}`}</h4>
                 <h6 className="prof-name">{ username }</h6>
                 <h6 className="prof-name">{ kind }</h6>
-                <button className="prof-name" onClick={ () => this.setState({ formDisplay: !this.state.formDisplay }) }>post project</button>
+                <Modal
+      show={ this.state.projectCreated }
+
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Congratulations!
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {/* <h4>Congratulations</h4> */}
+        <p>
+         Your project has been submitted!
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <button className="prof-name button" onClick={ this.projectCreated }>Close</button>
+      </Modal.Footer>
+    </Modal>
+                <button className="prof-name button" onClick={ () => this.setState({ formDisplay: !this.state.formDisplay }) }>post project</button>
                 <div className="prof-name" style={{display: this.state.formDisplay ? "block" : "none"}}>
                 <br/>
                     <form onSubmit={ this.projectSubmitted }>
@@ -270,7 +311,7 @@ export class Dashboard extends Component {
                     value={ this.state.stipulation }/><br/>
 
                     <br/>
-                    <input type="submit" />
+                    <input className="button" type="submit" />
                     </form>
                 </div>
                 </div>
@@ -278,7 +319,7 @@ export class Dashboard extends Component {
         <label>{ user1.kind === "Client" ?  `${developers[0].kind}s` : `${projects[0].kind}s`}</label>
                     { developers.slice(0,5).map((developer) => {
                         return <Link to={`/developers/${developer.id}`} onClick={()=> this.props.setPage(developer)} key={ developer.id }>
-                            < Card >
+                            < Card id="dev-list">
                         <Card.Title className="card-title-dev">
                         {`${developer.first_name} ${developer.last_name}`}
                         </Card.Title>

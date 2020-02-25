@@ -69,7 +69,10 @@ export class ProjectShow extends Component {
             <button 
             style={{display: kind === "Developer" ? "block":"none"}}
             onClick={this.setFormDisplay}
-             >sign contract</button>
+             >sign contract</button><br></br><br></br><br></br>
+             <br></br><br></br><br></br>
+             <br></br><br></br><br></br>
+             <br></br><br></br><br></br>
              <div style={{display: this.state.formDisplay ? "block":"none"}}>
                  <br/>
             <form onSubmit={ this.contractSubmitted }>
@@ -86,6 +89,10 @@ export class ProjectShow extends Component {
             type="submit" 
             />
             </form>
+            <br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                <br></br><br></br><br></br>
              </div>
             </div>
         )

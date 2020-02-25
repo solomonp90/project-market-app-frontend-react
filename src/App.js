@@ -8,6 +8,7 @@ import ProjectsContainer from './containers/ProjectsContainer'
 import DevShow from './components/DevShow'
 import ProjectShow from './components/projectShow'
 import Login from './components/Login'
+// import { ProjectCreate } from '../Modals/ProjectCreate'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class App extends Component {
@@ -67,22 +68,26 @@ export class App extends Component {
       this.setState({
         token: token,
         loggedInUserId: loggedInUserId,
-        user:user1 
+        user:user1
+        
+        
+        
         
       })
-      
-      } else {
+      console.log("fromset token:",this.state.user)
+    } else {
       return "sorry must create an account"
     }   
   }
-
-
+  
+  
   addProject = (project) => {
     this.setState({
       projects:[ project,...this.state.projects ],   
     })
   }
-
+  
+ 
 
   setLogin = () => {
     let logged = this.state.loggedIn
@@ -91,6 +96,7 @@ export class App extends Component {
       loggedIn:!logged,
       loggedOut:!loggedOut
     })
+    console.log("from set login",this.state.loggedIn)
   }
   
   setLogout = () => {
@@ -188,7 +194,7 @@ export class App extends Component {
   
   
 
-  render() {
+  render()  {
     return (
       <div className="App background" >     
         <Navbar bg="dark" variant="dark" >
@@ -203,22 +209,11 @@ export class App extends Component {
   </Navbar>
         < Switch>
         <Route exact path="/">
-  {this.state.loggedIn ? <Redirect to="/home" /> : < Login  setToken={this.setToken} 
-    user={this.state.user}
-    loggedInUserId={this.state.loggedInUserId}
-    token={this.state.token}/>}
-</Route>
-
-<Route path="/home">
-  {this.state.accountDeleted || !localStorage.user ? < Login  setToken={this.setToken} 
-    user={this.state.user}
-    loggedInUserId={this.state.loggedInUserId}
-    token={this.state.token}/> : this.dashWithprops }
-</Route>
-        < Route exact path="/" component={ this.loginWithProps }/>
-        < Route exact path="/" component={ this.loginWithProps }/>
-        {/* < Route path="/home" component={ this.dashWithprops }/> */}
-        < Route path="/main" component={ this.mainWithProps }/>
+          { localStorage.token ? <Redirect to="/home" /> : this.loginWithProps }
+        </Route>
+        <Route path="/home">
+          {this.state.accountDeleted || !localStorage.user ? this.loginWithProps : this.dashWithprops }
+        </Route>
         < Route exact path="/developers" component={ localStorage.token ? this.mainWithProps : this.loginWithProps }/>
         < Route exact path={`/developers/${this.state.page}`} component={ localStorage.token ? this.devShowWprops : this.loginWithProps }/>
         < Route exact path="/projects" component={ localStorage.token ? this.projectsWithProps : this.loginWithProps }/>

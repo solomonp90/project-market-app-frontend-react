@@ -101,3 +101,25 @@
   text-align: left;
   color: #343a40;
 }
+
+.button{
+  border-radius: 9px;
+  border-color: #343a40;
+  border-width: 2px;
+}
+
+#dev-list {
+  border-color: #343a40;
+  border-width: 1px;
+  background: tomato;
+  background: #e2e2e2;
+}
+
+.devShow {
+  column-count:2;
+}
+
+.devIdx{
+  max-width: 300px;
+  max-height: 300px;
+}

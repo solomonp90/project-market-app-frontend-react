@@ -7,7 +7,7 @@ export class DevShow extends Component {
     render() {
         const { first_name, last_name, image, skill, experience} = this.props.developer
         return (
-            <div>
+            <div className="col">
                 <h4>
                     { `${first_name} ${last_name}` }
                 </h4>
@@ -17,7 +17,11 @@ export class DevShow extends Component {
                 <h6>
                     { `${experience} experience with ${skill}`}
                 </h6>
-            </div>
+                <br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                </div>     
         )
     }
 }

@@ -44,8 +44,9 @@ export class Login extends Component {
               this.setState({
                 errors: data.errors
               })
-            else            
+            else          
               this.props.setToken(data.token, data.user_id, data.user)
+              console.log(this.props)
           })
 
       }
@@ -114,7 +115,7 @@ export class Login extends Component {
           }
           )
         } else {
-          // Reminder:console.log("no good",this.state.kind,"you need to change whats in this function set token wont work for signup submitted because set token does something else")
+
         }
 
       }
@@ -132,8 +133,9 @@ export class Login extends Component {
           </ul>
           
               <h2>Log In</h2>
-              <button onClick={ () => this.setState({ logIn: false }) }>I need to register!!!</button>
+              <button className="button" onClick={ () => this.setState({ logIn: false }) }>click to register</button>
               <form onSubmit={ this.logInSubmitted }>
+              <br/>
                 <label  htmlFor="log_in_username">Username</label>
                 <input  id="log_in_username" 
                         type="text" 
@@ -146,7 +148,8 @@ export class Login extends Component {
                         onChange={ this.onChange } 
                         name="password" 
                         value={ this.state.password } />
-                <input type="submit" />
+                        <br/>
+                <input className="button" type="submit" />
               </form>
 
               <div>
@@ -162,9 +165,9 @@ export class Login extends Component {
             : 
             <div>
               <h2>Sign up</h2>
-              <button onClick={ () => this.setState({ logIn: true }) }>I already signed up!!!</button>
-          <button style={{display: this.state.isClient ? "none" : "block"}} onClick={ () => this.setState({ kind: "Client",isClient: true }) }>click here if your a client!</button>
-          <button style={{display: this.state.isClient ? "block" : "none"}} onClick={ () => this.setState({ kind: "Developer",isClient: false }) }>click here if your a developer!</button>
+              <button className="button" onClick={ () => this.setState({ logIn: true }) }>I already signed up!!!</button>
+          <button className="button" style={{display: this.state.isClient ? "none" : "block"}} onClick={ () => this.setState({ kind: "Client",isClient: true }) }>click here if your a client!</button>
+          <button className="button" style={{display: this.state.isClient ? "block" : "none"}} onClick={ () => this.setState({ kind: "Developer",isClient: false }) }>click here if your a developer!</button>
               <form onSubmit={ this.signUpSubmitted }>
               <label  htmlFor="sign_up_first_name">first name</label><br/>
                 <input  id="sign_up_first_name" 
@@ -235,7 +238,7 @@ export class Login extends Component {
 
                         </div>
                 <br/>
-                <input type="submit" />
+                <input className="button" type="submit" />
               </form>
             </div>
           
