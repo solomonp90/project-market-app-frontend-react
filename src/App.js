@@ -71,8 +71,6 @@ export class App extends Component {
         user:user1
         
         
-        
-        
       })
       console.log("fromset token:",this.state.user)
     } else {
